@@ -1,0 +1,19 @@
+.sponsors .link {
+  position: absolute;
+  top: 10px;
+  left: 42%;
+  z-index: 999;
+  transition: opacity 0.5s linear;
+}
+
+@media only screen and (max-width: 768px) {
+  .sponsors .link {
+    top: 55px;
+    left: 30%;
+  }
+}
+
+.sponsors .link .logo {
+  width: 150px;
+  height: 40px;
+}
