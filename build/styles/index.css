@@ -6,14 +6,40 @@
   transition: opacity 0.5s linear;
 }
 
+.sponsors .link .logo {
+  width: 150px;
+  height: 40px;
+}
+
+.team-logo {
+  position: absolute;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  right: 38%;
+}
+
+.ase-logo {
+  position: absolute;
+  bottom: 20px;
+  right: 30%;
+  width: 160px;
+}
+
 @media only screen and (max-width: 768px) {
   .sponsors .link {
     top: 55px;
     left: 30%;
   }
-}
 
-.sponsors .link .logo {
-  width: 150px;
-  height: 40px;
+  .team-logo {
+    top: 65px;
+    right: 15%;
+  }
+
+  .ase-logo {
+    bottom: 35px;
+    right: 28%;
+    width: 80px;
+  }
 }

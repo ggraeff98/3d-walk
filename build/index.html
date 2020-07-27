@@ -3069,6 +3069,10 @@ Click the help icon above to learn more.
       </a>
     </div>
 
+    <img class="team-logo" src="assets/logos/INTER-160px.png">
+
+    <img class="ase-logo" src="assets/logos/ASE-85px.png">
+
     <!-- footer buffer start -->
     <!-- footer buffer end -->
     <script src="scripts/sponsorsBehavior.js"></script>
@@ -3173,7 +3177,9 @@ Click the help icon above to learn more.
             jQuery("#mp-iframe").attr("src", mp_iframe_src);
           }
           jQuery("#wp3d-intro").fadeOut("slow");
-          // initSponsorShowing();
+          setTimeout(() => {
+            initSponsorShowing();
+          }, 1000);
           jQuery("#wp3d-iframe-wrap").removeClass("wp3d-sold wp3d-pending"); // if it exists, remove the sold/pending when actually viewing the model
           if (viewport.width < 768) {
             // fade out overlay on small screens

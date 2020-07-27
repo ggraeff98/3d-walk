@@ -27,13 +27,19 @@ const LAST_SPONSOR_TO_SHOW_INDEX = SPONSORS.length - 1;
 let currentSponsor = FIRS_SPONSOR_TO_SHOW;
 
 function showSponsor(link, logo) {
+  console.log("showSponsor");
   jQuery(".sponsors").find(".link").attr("href", link);
   jQuery(".sponsors").find(".logo").attr("src", logo);
 
   jQuery(".sponsors").find(".link").css({ opacity: "1" });
+
+  setTimeout(() => {
+    hideSponsorLogo();
+  }, 5000);
 }
 
 function changeShowingSponsor() {
+  console.log("changeShowingSponsor");
   if (currentSponsor === LAST_SPONSOR_TO_SHOW_INDEX) {
     currentSponsor = FIRS_SPONSOR_TO_SHOW;
     return;
@@ -43,21 +49,17 @@ function changeShowingSponsor() {
 }
 
 function hideSponsorLogo() {
-  setTimeout(() => {
-    jQuery(".sponsors").find(".link").css({ opacity: "0" });
-  }, HIDE_SPONSOR_TIMER_SYNC_TRANSITION_EFFECT_MILLISECONDS);
+  console.log("hideSponsorLogo");
+
+  //jQuery(".sponsors").find(".link").css({ opacity: "0" });
+  changeShowingSponsor();
+  showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
+  /* setTimeout(() => {
+    showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
+  }, 1000); */
 }
 
 function initSponsorShowing() {
+  console.log("initSponsorShowing");
   showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
-
-  hideSponsorLogo();
-
-  setInterval(() => {
-    hideSponsorLogo();
-
-    changeShowingSponsor();
-
-    showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
-  }, CHANGE_SPONSOR_TIMER_AFTER_TRANSITION_EFFECT_MILLISECONDS);
 }
