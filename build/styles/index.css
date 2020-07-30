@@ -1,9 +1,9 @@
 .container-logos-top {
   display: flex;
+  width: 100%;
   position: absolute;
-  z-index: 999;
   align-items: center;
-  right: 38%;
+  justify-content: center;
   top: 10px;
 }
 
@@ -12,12 +12,12 @@
 }
 
 .sponsors .link {
-  transition: opacity 0.5s linear;
+  display: flex;
 }
 
 .sponsors .link .logo {
   width: 150px;
-  height: 40px;
+  height: 35px;
 }
 
 .team-logo {
@@ -27,20 +27,13 @@
 
 .ase-logo {
   position: absolute;
-  bottom: 20px;
-  right: 30%;
+  bottom: 65px;
+  left: 15px;
   width: 160px;
 }
 
 @media only screen and (max-width: 768px) {
   .container-logos-top {
-    left: 25%;
     top: 60px;
-  }
-
-  .ase-logo {
-    bottom: 60px;
-    right: 5%;
-    width: 120px;
   }
 }

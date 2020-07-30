@@ -6,7 +6,7 @@ const SPONSORS = [
   },
   {
     company: "Banrisul",
-    logo: "../assets/logos/BANRISUL-300PX.png",
+    logo: "../assets/logos/BANRISUL-100PX.png",
     link: "https://www.banrisul.com.br/"
   },
   {
@@ -16,10 +16,6 @@ const SPONSORS = [
   }
 ];
 
-const HIDE_SPONSOR_TIMER_SYNC_TRANSITION_EFFECT_MILLISECONDS = 4500;
-
-const CHANGE_SPONSOR_TIMER_AFTER_TRANSITION_EFFECT_MILLISECONDS = 5000;
-
 const FIRS_SPONSOR_TO_SHOW = 0;
 
 const LAST_SPONSOR_TO_SHOW_INDEX = SPONSORS.length - 1;
@@ -27,39 +23,28 @@ const LAST_SPONSOR_TO_SHOW_INDEX = SPONSORS.length - 1;
 let currentSponsor = FIRS_SPONSOR_TO_SHOW;
 
 function showSponsor(link, logo) {
-  console.log("showSponsor");
   jQuery(".sponsors").find(".link").attr("href", link);
   jQuery(".sponsors").find(".logo").attr("src", logo);
-
-  jQuery(".sponsors").find(".link").css({ opacity: "1" });
+  jQuery(".sponsors").fadeIn();
 
   setTimeout(() => {
-    hideSponsorLogo();
-  }, 5000);
+    jQuery(".sponsors").fadeOut();
+    changeShowingSponsor();
+  }, 4600);
 }
 
 function changeShowingSponsor() {
-  console.log("changeShowingSponsor");
   if (currentSponsor === LAST_SPONSOR_TO_SHOW_INDEX) {
     currentSponsor = FIRS_SPONSOR_TO_SHOW;
-    return;
+  } else {
+    currentSponsor++;
   }
 
-  currentSponsor++;
-}
-
-function hideSponsorLogo() {
-  console.log("hideSponsorLogo");
-
-  //jQuery(".sponsors").find(".link").css({ opacity: "0" });
-  changeShowingSponsor();
-  showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
-  /* setTimeout(() => {
+  setTimeout(() => {
     showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
-  }, 1000); */
+  }, 400);
 }
 
 function initSponsorShowing() {
-  console.log("initSponsorShowing");
   showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
 }
