@@ -1,17 +1,17 @@
 const SPONSORS = [
   {
     company: "Safeweb",
-    logo: "../assets/logos/SAFEWEB-300px.png",
+    logo: "assets/logos/SAFEWEB-300px.png",
     link: "https://safeweb.com.br/"
   },
   {
     company: "Banrisul",
-    logo: "../assets/logos/BANRISUL-100PX.png",
+    logo: "assets/logos/BANRISUL-100PX.png",
     link: "https://www.banrisul.com.br/"
   },
   {
     company: "Chevrolet",
-    logo: "../assets/logos/CHEVROLET-300PX.png",
+    logo: "assets/logos/CHEVROLET-300PX.png",
     link: "https://www.chevrolet.com.br/"
   }
 ];
@@ -41,6 +41,12 @@ function changeShowingSponsor() {
   }
 
   setTimeout(() => {
+    const banrisulLogo = 1;
+    if (currentSponsor === banrisulLogo) {
+      jQuery(".sponsors").find(".logo").addClass("banrisul-logo");
+    } else {
+      jQuery(".sponsors").find(".logo").removeClass("banrisul-logo");
+    }
     showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
   }, 400);
 }
