@@ -1,18 +1,43 @@
 const SPONSORS = [
   {
-    company: "Safeweb",
-    logo: "assets/logos/SAFEWEB-300px.png",
-    link: "https://safeweb.com.br/"
+    company: "Adidas",
+    logo: "../assets/logos/ADIDAS.png",
+    link: "https://www.adidas.com.br/" 
+  },
+  {
+    company: "Ambev",
+    logo: "../assets/logos/AMBEV2.png",
+    link: "https://www.ambev.com.br/"
   },
   {
     company: "Banrisul",
-    logo: "assets/logos/BANRISUL-100PX.png",
+    logo: "../assets/logos/BANRISUL-100PX.png",
     link: "https://www.banrisul.com.br/"
   },
   {
+    company: "Betsul",
+    logo: "../assets/logos/BETSUL.png",
+    link: "https://www.betsul.com/"
+  },
+  {
+    company: "Brahma",
+    logo: "../assets/logos/BRAHMA.png",
+    link: "https://cervejaria.brahma.com.br/"
+  },
+  {
     company: "Chevrolet",
-    logo: "assets/logos/CHEVROLET-300PX.png",
+    logo: "../assets/logos/CHEVROLET-300PX.png",
     link: "https://www.chevrolet.com.br/"
+  },
+  {
+    company: "Panvel",
+    logo: "../assets/logos/PANVEL.png",
+    link: "https://www.panvel.com/panvel/main.do"
+  },
+  {
+    company: "Safeweb",
+    logo: "../assets/logos/SAFEWEB-300px.png",
+    link: "https://safeweb.com.br/"
   }
 ];
 
@@ -20,7 +45,18 @@ const FIRST_SPONSOR_TO_SHOW = 0;
 
 const LAST_SPONSOR_TO_SHOW_INDEX = SPONSORS.length - 1;
 
-let currentSponsor = FIRST_SPONSOR_TO_SHOW;
+let currentSponsor = LAST_SPONSOR_TO_SHOW_INDEX;
+
+const SPONSOR_INDEX = {
+  '/adidas': 0,
+  '/ambev': 1,
+  '/banrisul': 2,
+  '/betsul': 3,
+  '/brahma': 4,
+  '/chevrolet': 5,
+  '/panvel': 6,
+  '/safeweb': 7
+}
 
 function showSponsor(link, logo) {
   jQuery(".sponsors").find(".link").attr("href", link);
@@ -34,12 +70,8 @@ function showSponsor(link, logo) {
 }
 
 function changeShowingSponsor() {
-  if (document.location.pathname === '/banrisul') {
-    currentSponsor = 1;
-  } else if (document.location.pathname === '/chevrolet') {
-    currentSponsor = 2;
-  } else if (document.location.pathname === '/safeweb') {
-    currentSponsor = FIRST_SPONSOR_TO_SHOW;
+  if (document.location.pathname !== '/') {
+    setSponsorIndexToShow(document.location.pathname)
   } else {
     if (currentSponsor === LAST_SPONSOR_TO_SHOW_INDEX) {
       currentSponsor = FIRST_SPONSOR_TO_SHOW;
@@ -49,23 +81,25 @@ function changeShowingSponsor() {
   }
 
   setTimeout(() => {
-    const banrisulLogo = 1;
+    const banrisulLogo = SPONSOR_INDEX['/banrisul'];
+    const adidasLogo = SPONSOR_INDEX['/adidas'];
+
     if (currentSponsor === banrisulLogo) {
       jQuery(".sponsors").find(".logo").addClass("banrisul-logo");
+    } else if (currentSponsor === adidasLogo) {
+      jQuery(".sponsors").find(".logo").addClass("adidas-logo");
     } else {
       jQuery(".sponsors").find(".logo").removeClass("banrisul-logo");
+      jQuery(".sponsors").find(".logo").removeClass("adidas-logo");
     }
     showSponsor(SPONSORS[currentSponsor].link, SPONSORS[currentSponsor].logo);
   }, 400);
 }
 
 function initSponsorShowing() {
-  if (document.location.pathname === '/banrisul') {
-    currentSponsor = 1;
-  } else if (document.location.pathname === '/chevrolet') {
-    currentSponsor = 2;
-  } else if (document.location.pathname === '/safeweb') {
-    currentSponsor = FIRST_SPONSOR_TO_SHOW;
-  }
   changeShowingSponsor();
+}
+
+function setSponsorIndexToShow(path) {
+  currentSponsor = SPONSOR_INDEX[path];
 }
