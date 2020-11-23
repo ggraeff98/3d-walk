@@ -38,6 +38,11 @@ const SPONSORS = [
     company: "Safeweb",
     logo: "../assets/logos/SAFEWEB-300px.png",
     link: "https://safeweb.com.br/"
+  },
+  {
+    company: "SuaMarca",
+    logo: "../assets/logos/SUA-MARCA.png",
+    link: ""
   }
 ];
 
@@ -55,7 +60,8 @@ const SPONSOR_INDEX = {
   '/brahma': 4,
   '/chevrolet': 5,
   '/panvel': 6,
-  '/safeweb': 7
+  '/safeweb': 7,
+  '/suamarca': 8
 }
 
 function showSponsor(link, logo) {
